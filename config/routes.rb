@@ -1,4 +1,10 @@
 HaimsRails2::Application.routes.draw do
+  # root
+  root to: 'devices#index'
+
+  # devices
+  resources :devices
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
