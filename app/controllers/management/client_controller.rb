@@ -38,7 +38,7 @@ class Management::ClientController < ApplicationController
   def destroy
     client = ::Client.find(params[:id])
 
-    if true
+    if client.destroy
       flash[:notice] = "Succeed delete client!"
     else
       flash[:error] = "Failed delete client!"

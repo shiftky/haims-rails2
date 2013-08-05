@@ -1,2 +1,29 @@
-<h1>Management::Board#new</h1>
-<p>Find me in app/views/management/board/new.html.erb</p>
+<ul class="breadcrumb">
+  <li>
+    <%= link_to "Management", management_index_path %>
+    <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to "Client list", management_client_index_path %>
+    <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to "Board list", management_client_board_index_path(@client.id) %>
+    <span class="divider">/</span>
+  </li>
+  <li class="active">Add new Board</li>
+</ul>
+
+<h3 class="page-header">Add new Boad</h3>
+
+<% if flash[:error] %>
+  <p class="alert alert-error" >
+    <button type=button" class="close" data-dismiss="alert">x</button>
+    <strong><%= h flash[:error] %></strong>
+  </p>
+<% end %>
+
+<%= form_for @board, :url => management_client_board_index_path, :method => :post, :html => {:class => "form-horizontal"} do |f| %>
+  <%= render :partial => 'board_form', :locals => {:f => f} %>
+<% end %>
+
