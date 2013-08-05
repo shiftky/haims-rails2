@@ -11,11 +11,8 @@
     <div class="navbar-inner">
       <%= link_to "HAIMS2", root_path, :class => "brand" %>
       <ul class="nav">
-        <li class="<%= active_path?(root_path) || active_path?(devices_path) %>">
-          <%= link_to "Devices", devices_path %>
-        </li>
-        <li class="<%= %>">
-          <%= link_to "IR Signals", "" %>
+        <li class="<%= active_path?(root_path) || active_path?(device_index_path) %>">
+          <%= link_to "Device", device_index_path %>
         </li>
         <li class="<%= %>">
           <%= link_to "Management", "" %>
