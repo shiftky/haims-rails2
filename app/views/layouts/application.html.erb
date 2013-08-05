@@ -7,8 +7,24 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+      <%= link_to "HAIMS2", root_path, :class => "brand" %>
+      <ul class="nav">
+        <li class="<%= active_path?(root_path) || active_path?(devices_path) %>">
+          <%= link_to "Devices", devices_path %>
+        </li>
+        <li class="<%= %>">
+          <%= link_to "IR Signals", "" %>
+        </li>
+        <li class="<%= %>">
+          <%= link_to "Management", "" %>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
