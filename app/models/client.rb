@@ -1,5 +1,5 @@
 class Client < ActiveRecord::Base
-  has_many :borads
+  has_many :boards, dependent: :delete_all
 
   validates :name, presence: true
   validates :address, presence: true
