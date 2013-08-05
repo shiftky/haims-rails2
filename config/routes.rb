@@ -1,4 +1,5 @@
 HaimsRails2::Application.routes.draw do
+  get "board/new"
   get "management/index"
   get "board/index"
   get "board/edit"
