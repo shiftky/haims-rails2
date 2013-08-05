@@ -1,2 +1,46 @@
-<h1>Management::Client#index</h1>
-<p>Find me in app/views/management/client/index.html.erb</p>
+<ul class="breadcrumb">
+  <li>
+    <%= link_to "Management", management_index_path %>
+    <span class="divider">/</span>
+  </li>
+  <li class="active">Client list</li>
+</ul>
+
+<h3 class="page-header">Client list</h3>
+
+<% if flash[:notice] %>
+  <p class="alert alert-success" >
+    <button type=button" class="close" data-dismiss="alert">x</button>
+    <strong><%= h flash[:notice] %></strong>
+  </p>
+<% elsif flash[:error] %>
+  <p class="alert alert-error" >
+    <button type=button" class="close" data-dismiss="alert">x</button>
+    <strong><%= h flash[:error] %></strong>
+  </p>
+<% end %>
+
+<p><%= link_to "Add new client", new_management_client_path, :class => "btn btn-primary" %></p>
+
+<table class="table table-striped">
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>IP Address</th>
+    <th>Port</th>
+    <th />
+  </tr>
+  <% @clients.each do |client| %>
+    <tr>
+      <th><%= client.id %></th>
+      <th><%= link_to client.name, management_client_board_index_path(client.id) %></th>
+      <th><%= client.address %></th>
+      <th><%= client.port %></th>
+      <th>
+        <%= link_to "Edit", edit_management_client_path(client.id), :class => "btn" %>
+        <%= link_to "Delete", management_client_path(client.id), :method => :delete, :class => "btn btn-danger", :confirm => "Can I delete it?" %>
+      </th>
+    </tr>
+  <% end %>
+</table>
+</div>
