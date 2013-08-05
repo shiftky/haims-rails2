@@ -1,9 +1,22 @@
 HaimsRails2::Application.routes.draw do
+  get "management/index"
+  get "board/index"
+  get "board/edit"
+  get "client/index"
+  get "client/edit"
   # root
   root to: 'device#index'
 
   # device
   resources :device
+
+  # management
+  resources :management, :only => :index
+  namespace :management do
+    resources :client, :except => :show do
+      resources :board, :except => :show
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

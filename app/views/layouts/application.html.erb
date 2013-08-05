@@ -14,8 +14,8 @@
         <li class="<%= active_path?(root_path) || active_path?(device_index_path) %>">
           <%= link_to "Device", device_index_path %>
         </li>
-        <li class="<%= %>">
-          <%= link_to "Management", "" %>
+        <li class="<%= active_path?(management_index_path) %>">
+          <%= link_to "Management", management_index_path %>
         </li>
       </ul>
     </div>
