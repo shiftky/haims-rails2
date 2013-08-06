@@ -3,7 +3,10 @@ HaimsRails2::Application.routes.draw do
   root to: 'device#index'
 
   # device
-  resources :device
+  resources :device, :except => :show do
+    resources :ir_signal, :expect => :show
+    post :send
+  end
 
   # management
   resources :management, :only => :index

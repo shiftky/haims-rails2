@@ -1,0 +1,2 @@
+module Device::IrSignalHelper
+end
