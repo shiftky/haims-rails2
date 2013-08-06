@@ -1,7 +1,17 @@
+require 'open-uri'
+require 'json'
+
 class DeviceController < ApplicationController
   def index
-    @temp = 23
-    @illumi = 900
+    @board = Board.includes(:client).where(:name => "main").first
+    @address = @board.client.address
+    @port = @board.client.port
+
+    json = JSON.parser.new(open("http://#{@address}:#{@port}/haims/api/sensors?board=main").read)
+    result = json.parse
+
+    @temp = result["temp"]
+    @illumi = result["illumi"]
     @devices = Device.includes(:ir_signals).all
   end
 

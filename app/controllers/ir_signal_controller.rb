@@ -1,4 +1,10 @@
+require 'open-uri'
+require 'json'
+
 class IrSignalController < ApplicationController
+  HOST = "localhost"
+  PORT = 4567
+
   def new
     @ir_signal = IrSignal.new(:device_id => params[:device_id])
   end
@@ -43,6 +49,14 @@ class IrSignalController < ApplicationController
   end
 
   def send_ir
+    @ir_signal = IrSignal.find(params[:ir_signal_id])
+    @board = Board.includes(:client).find(@ir_signal.board_id)
+    @address = @board.client.address
+    @port = @board.client.port
+
+    json = JSON.parser.new(open("http://#{@address}:#{@port}/haims/api/ir/send?board=#{@board.name}&signal=#{@ir_signal.signal}").read)
+    result = json.parse
+
     if true
       flash[:notice] = "Succeed Send IR Signal!"
     else
