@@ -1,10 +1,4 @@
 HaimsRails2::Application.routes.draw do
-  get "board/new"
-  get "management/index"
-  get "board/index"
-  get "board/edit"
-  get "client/index"
-  get "client/edit"
   # root
   root to: 'device#index'
 

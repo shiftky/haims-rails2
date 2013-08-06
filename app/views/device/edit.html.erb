@@ -1,2 +1,33 @@
-<h1>Devices#edit</h1>
-<p>Find me in app/views/devices/edit.html.erb</p>
+<ul class="breadcrumb">
+  <li>
+    <%= link_to "Device", root_path %>
+    <span class="divider">/</span>
+  </li>
+  <li class="active">Edit Device</li>
+</ul>
+
+<h3 class="page-header">Edit Device</h3>
+
+<% if flash[:error] %>
+  <p class="alert alert-error" >
+    <button type=button" class="close" data-dismiss="alert">x</button>
+    <strong><%= h flash[:error] %></strong>
+  </p>
+<% end %>
+
+<%= form_for @device, :url => device_path, :method => :put, :html => {:class => "form-horizontal"} do |f| %>
+  <%= render :partial => 'device_form', :locals => {:f => f} %>
+<% end %>
+
+<br />
+
+<h3 class="page-header">IR Signals</h3>
+<p><%= link_to "Add new IR Signal", "", :class => "btn btn-primary" %></p>
+<table class="table table-striped">
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Signal</th>
+    <th />
+  </tr>
+</table>

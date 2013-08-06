@@ -1,2 +1,20 @@
-<h1>Devices#new</h1>
-<p>Find me in app/views/devices/new.html.erb</p>
+<ul class="breadcrumb">
+  <li>
+    <%= link_to "Device", root_path %>
+    <span class="divider">/</span>
+  </li>
+  <li class="active">Add new Device</li>
+</ul>
+
+<h3 class="page-header">Add new Device</h3>
+
+<% if flash[:error] %>
+  <p class="alert alert-error" >
+    <button type=button" class="close" data-dismiss="alert">x</button>
+    <strong><%= h flash[:error] %></strong>
+  </p>
+<% end %>
+
+<%= form_for @device, :url => device_index_path, :method => :post, :html => {:class => "form-horizontal"} do |f| %>
+  <%= render :partial => 'device_form', :locals => {:f => f} %>
+<% end %>
