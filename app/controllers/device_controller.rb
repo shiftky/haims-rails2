@@ -33,7 +33,7 @@ class DeviceController < ApplicationController
       redirect_to device_index_path
     else
       flash[:error] = "Failed update device!"
-      render edit_device_path
+      redirect_to edit_device_path(@device.id)
     end
   end
 
