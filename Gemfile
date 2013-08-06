@@ -32,6 +32,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'pry-rails'
+gem 'hirb-unicode'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'

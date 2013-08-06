@@ -21,10 +21,10 @@
 
       <div class="row-fluid">
         <div class="span3">
-          <h1>28 <small> ℃</small></h1>
+          <h1><%= @temp %> <small> ℃</small></h1>
         </div>
         <div class="span3">
-          <h1>1000 <small> lx</small></h1>
+          <h1><%= @illumi %> <small> lx</small></h1>
         </div>
       </div>
     </div>
@@ -43,8 +43,10 @@
             </ul>
           </div>
         </h3>
-        <%= link_to "Signal 01", "", :class => "btn btn-large" %>
-        <%= link_to "Signal 02", "", :class => "btn btn-large" %>
+
+        <% device.ir_signals.each do |ir_signal| %>
+          <%= link_to ir_signal.name, device_ir_signal_send_ir_path(device.id, ir_signal.id), :class => "btn btn-large" %>
+        <% end %>
       </div>
     <% end %>
 

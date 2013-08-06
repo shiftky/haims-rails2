@@ -4,8 +4,9 @@ HaimsRails2::Application.routes.draw do
 
   # device
   resources :device, :except => :show do
-    resources :ir_signal, :expect => :show
-    post :send
+    resources :ir_signal, :expect => :show do
+      get :send_ir
+    end
   end
 
   # management

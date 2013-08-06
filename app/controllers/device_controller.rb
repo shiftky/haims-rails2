@@ -1,8 +1,8 @@
 class DeviceController < ApplicationController
   def index
-    @temp = 28
-    @illumi = 1000
-    @devices = Device.all
+    @temp = 23
+    @illumi = 900
+    @devices = Device.includes(:ir_signals).all
   end
 
   def new
@@ -22,7 +22,7 @@ class DeviceController < ApplicationController
   end
 
   def edit
-    @device = Device.find(params[:id])
+    @device = Device.includes(:ir_signals).find(params[:id])
   end
 
   def update

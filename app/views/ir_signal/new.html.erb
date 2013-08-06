@@ -1,2 +1,24 @@
-<h1>Device::IrSignal#new</h1>
-<p>Find me in app/views/device/ir_signal/new.html.erb</p>
+<ul class="breadcrumb">
+  <li>
+    <%= link_to "Device", root_path %>
+    <span class="divider">/</span>
+  </li>
+  <li>
+    <%= link_to "Edit Device", edit_device_path(params[:device_id]) %>
+    <span class="divider">/</span>
+  </li>
+  <li class="active">Add new IR Signal</li>
+</ul>
+
+<h3 class="page-header">Add new IR Signal</h3>
+
+<% if flash[:error] %>
+  <p class="alert alert-error" >
+    <button type=button" class="close" data-dismiss="alert">x</button>
+    <strong><%= h flash[:error] %></strong>
+  </p>
+<% end %>
+
+<%= form_for @ir_signal, :url => device_ir_signal_index_path, :method => :post, :html => {:class => "form-horizontal"} do |f| %>
+  <%= render :partial => 'ir_signal_form', :locals => {:f => f} %>
+<% end %>

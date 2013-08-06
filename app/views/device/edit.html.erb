@@ -8,7 +8,12 @@
 
 <h3 class="page-header">Edit Device</h3>
 
-<% if flash[:error] %>
+<% if flash[:notice] %>
+  <p class="alert alert-success" >
+    <button type=button" class="close" data-dismiss="alert">x</button>
+    <strong><%= h flash[:notice] %></strong>
+  </p>
+<% elsif flash[:error] %>
   <p class="alert alert-error" >
     <button type=button" class="close" data-dismiss="alert">x</button>
     <strong><%= h flash[:error] %></strong>
@@ -30,4 +35,15 @@
     <th>Signal</th>
     <th />
   </tr>
+  <% @device.ir_signals.each do |ir_signal| %>
+    <tr>
+      <td><%= ir_signal.id %></td>
+      <td><%= ir_signal.name %></td>
+      <td><%= ir_signal.signal[0..15] + "..." %></td>
+      <td>
+        <%= link_to "Edit", edit_device_ir_signal_path(@device.id, ir_signal.id), :class => "btn" %>
+        <%= link_to "Delete", device_ir_signal_path(@device.id, ir_signal.id), :method => :delete, :class => "btn btn-danger", :confirm => "Can I delete it?" %>
+      </td>
+    </tr>
+  <% end %>
 </table>
